@@ -11,7 +11,7 @@ const initialState: IniStateType = {
 };
 
 export const currencySlice = createSlice({
-  name: 'currencies',
+  name: 'currency',
   initialState,
   reducers: {
     exchangeCurrency: (state, action: PayloadAction<boolean>) => {
@@ -28,6 +28,12 @@ export const currencySlice = createSlice({
       state.eur = action.payload;
     },
   },
+  selectors: {
+    selectUsd: (state) => state.usd,
+    selectEur: (state) => state.eur,
+  },
 });
 
 export const { exchangeCurrency, addEur, addUsd } = currencySlice.actions;
+export const { selectUsd, selectEur } = currencySlice.selectors;
+export default currencySlice.reducer;
